@@ -1,14 +1,13 @@
 package com.example.todoapp
 
-import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
 open class BaseViewHolder<T : Any>(
-    itemView: View,
+    binding: ViewDataBinding,
     private val clickListener: ViewHolderClickListener? = null
 ) :
-    RecyclerView.ViewHolder(itemView) {
+    RecyclerView.ViewHolder(binding.root) {
 
     open fun bind(value: T) {
         bindClickListeners()
