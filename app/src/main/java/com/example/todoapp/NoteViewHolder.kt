@@ -6,7 +6,7 @@ import com.example.todoapp.models.Note
 
 
 
-class NoteViewHolder(itemView: View) : BaseViewHolder<Note>(itemView) {
+class NoteViewHolder(itemView: View, clickListener: ViewHolderClickListener) : BaseViewHolder<Note>(itemView, clickListener) {
 
     override fun bind(value: Note) {
         itemView.findViewById<TextView>(R.id.note_title).text = value.title

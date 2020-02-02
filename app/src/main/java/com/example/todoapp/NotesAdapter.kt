@@ -1,6 +1,7 @@
 package com.example.todoapp
 
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.todoapp.models.Note
 
 class NotesAdapter : BaseAdapter<Note>() {
@@ -9,6 +10,16 @@ class NotesAdapter : BaseAdapter<Note>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         super.onCreateViewHolder(parent, viewType)
-        return NoteViewHolder(binding.root)
+        return NoteViewHolder(binding.root, NotesClickListener())
+    }
+
+    inner class NotesClickListener: ViewHolderClickListener{
+        override val onItemClick: ViewHolderClickType = { pos, type ->
+            Toast.makeText(binding.root.context, "Item selected: $pos", Toast.LENGTH_LONG).show()
+        }
+        override val onItemLongClick: ViewHolderClickType = { pos, type ->
+            Toast.makeText(binding.root.context, "Item long selected: $pos", Toast.LENGTH_LONG).show()
+        }
+
     }
 }
